@@ -1,0 +1,38 @@
+- name: Download Alertmanager
+  get_url:
+    url: https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
+    dest: /tmp/alertmanager.tar.gz
+
+- name: Extract Alertmanager
+  unarchive:
+    src: /tmp/alertmanager.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: Copy binaries
+  copy:
+    src: "/tmp/alertmanager-0.27.0.linux-amd64/{{ item }}"
+    dest: /usr/local/bin/
+    mode: '0755'
+    remote_src: yes
+  loop:
+    - alertmanager
+    - amtool
+
+- name: Create config
+  copy:
+    dest: /etc/alertmanager/alertmanager.yml
+    content: |
+      route:
+        receiver: pagerduty
+
+      receivers:
+        - name: pagerduty
+          pagerduty_configs:
+            - routing_key: "YOUR_KEY"
+
+- name: Start service
+  systemd:
+    name: alertmanager
+    enabled: yes
+    state: started
