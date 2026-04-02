@@ -139,6 +139,7 @@ roles/alertmanager/tasks/main.yml
 
 ---
 
+
 # 📦 Future Enhancements
 
 * Grafana dashboards auto import
@@ -149,6 +150,14 @@ roles/alertmanager/tasks/main.yml
 
 ---
 
+
+## run cmd
+
+```
+ansible-playbook -i inventory.ini  playbook.yml
+```
+
+
 # ❗ Troubleshooting
 
 ## Check Service Status
@@ -158,12 +167,6 @@ systemctl status prometheus
 systemctl status grafana-server
 systemctl status alertmanager
 systemctl status node_exporter
-```
-
-## Logs
-
-```
-journalctl -u prometheus -f
 ```
 
 ---
