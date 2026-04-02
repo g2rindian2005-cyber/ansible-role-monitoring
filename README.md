@@ -116,7 +116,8 @@ Each role handles only one responsibility.
 
 # 🔧 Customization
 
-## Change AWS Region
+## Change AWS Region and your node tag name
+## also add iam role to grafana prometheous server
 
 Edit:
 
