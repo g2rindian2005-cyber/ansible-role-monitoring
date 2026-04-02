@@ -1,0 +1,12 @@
+- name: Create prometheus user
+  user:
+    name: prometheus
+    shell: /bin/false
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/prometheus
+    - /var/lib/prometheus
