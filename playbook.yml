@@ -6,7 +6,7 @@
     - prometheus
     - grafana
     - node_exporter
-    - alertmanager
+    #- alertmanager
 
 - name: Setup Node Exporter on all nodes
   hosts: nodes
