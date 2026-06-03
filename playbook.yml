@@ -4,9 +4,9 @@
   roles:
     - common
     - prometheus
-    - alertmanager
     - grafana
     - node_exporter
+    - alertmanager
 
 - name: Setup Node Exporter on all nodes
   hosts: nodes
