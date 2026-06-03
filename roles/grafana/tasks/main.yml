@@ -2,14 +2,11 @@
 - name: Install Grafana
   hosts: all
   become: yes
-
   tasks:
-
     - name: Remove old Grafana repository
       file:
         path: /etc/apt/sources.list.d/grafana.list
         state: absent
-
     - name: Install dependencies
       apt:
         name:
