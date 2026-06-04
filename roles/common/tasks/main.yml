@@ -1,6 +1,10 @@
----
-- name: Install common packages
-  package:
+- name: Update system
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Install base packages
+  apt:
     name:
       - curl
       - wget
